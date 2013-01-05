@@ -28,4 +28,11 @@ public class JpaPostDao extends JpaGenericDao<Post, Long> implements PostDao {
 		return query.getResultList();
 	}
 
+	public List<Post> getAll() {
+		TypedQuery<Post> query = entityManager.createNamedQuery("Post.getAll",
+				Post.class);
+
+		return query.getResultList();
+	}
+
 }

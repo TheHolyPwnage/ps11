@@ -10,7 +10,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
 		@NamedQuery(name = "Post.getByCategoryId", query = "SELECT p FROM Post p WHERE p.categoryId = :categoryId"),
-		@NamedQuery(name = "Post.getByAuthor", query = "SELECT p FROM Post P WHERE p.author = :author") })
+		@NamedQuery(name = "Post.getByAuthor", query = "SELECT p FROM Post p WHERE p.author = :author"),
+		@NamedQuery(name = "Post.getAll", query = "SELECT p FROM Post p") })
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

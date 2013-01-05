@@ -21,4 +21,11 @@ public class JpaCategoryDao extends JpaGenericDao<Category, Long> implements
 		return query.getResultList();
 	}
 
+	public List<Category> getAll() {
+		TypedQuery<Category> query = entityManager.createNamedQuery(
+				"Category.getAll", Category.class);
+
+		return query.getResultList();
+	}
+
 }

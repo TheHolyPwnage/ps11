@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="pl.mchaniewski.ps11.*" />
+	<context:component-scan base-package="pl.mchaniewski.ps11.dao.jpa" />
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<jdbc:embedded-database id="dataSource" type="DERBY">

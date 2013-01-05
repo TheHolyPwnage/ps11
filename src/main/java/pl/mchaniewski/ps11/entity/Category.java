@@ -8,7 +8,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Category.getByAuthor", query = "SELECT c FROM Category c WHERE c.author = :author") })
+@NamedQueries({
+		@NamedQuery(name = "Category.getByAuthor", query = "SELECT c FROM Category c WHERE c.author = :author"),
+		@NamedQuery(name = "Category.getAll", query = "SELECT c FROM Category c") })
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
