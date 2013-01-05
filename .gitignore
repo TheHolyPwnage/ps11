@@ -1,0 +1,10 @@
+# Dirs
+target/**
+.settings/**
+
+# Files
+.classpath
+.project
+dependency-reduced-pom.xml
+derby.log
+
