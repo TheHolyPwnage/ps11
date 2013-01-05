@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<div th:fragment="main">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="#">SpamFest</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div th:fragment="notMain">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="#">SpamFest</a>
+				<ul class="nav">
+					<li class="active"><a href="categoryList.html"
+						th:href="@{/category}">Topics</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

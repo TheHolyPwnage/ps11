@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <title>Lista kategorii</title>
@@ -11,20 +12,75 @@
 </head>
 
 <body>
-
-	<div class="navbar">
-		<div class="navbar-inner">
-			<a class="brand" href="#">SpamFest</a>
-			<ul class="nav">
-				<li class="active"><a href="categoryList.html"
-					th:href="@{/category}">Tematy</a></li>
-			</ul>
-		</div>
-	</div>
-
 	<div class="container">
-		<div class="row show-grid">
-			<div class="offset4 show-grid">TEST</div>
+		<div class="row" th:include="template/header :: main">
+			<div class="navbar" th:remove="all">
+				<div class="navbar-inner">
+					<a class="brand" href="#">SpamFest</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Author</th>
+						<th>Description</th>
+						<th style="width: 90px;">Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cat : ${categoryList}"
+						th:class="${!cat.active}? 'error'">
+						<td th:text="${cat.title}">Title</td>
+						<td th:text="${cat.author}">Author</td>
+						<td th:text="${cat.description}">Lorem ipsum dolor sit amet,
+							consectetur adipiscing elit. Fusce vel lorem vestibulum magna
+							sodales faucibus. Nullam facilisis egestas feugiat. Nam sed.</td>
+						<td>
+							<button class="btn btn-danger" type="button">
+								<i class="icon-remove icon-white"></i>
+							</button>
+							<button class="btn btn-warning" type="button"
+								th:class="'btn ' + (${cat.active}? 'btn-warning' :  'btn-success')">
+								<i class="icon-refresh icon-white"></i>
+							</button>
+						</td>
+					</tr>
+					<tr class="error" th:remove="all">
+						<td>Lorem ipsum dolor sit posuere.</td>
+						<td>Lorem ipsum dolor sit amet.</td>
+						<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Fusce vel lorem vestibulum magna sodales faucibus. Nullam
+							facilisis egestas feugiat. Nam sed.</td>
+						<td>
+							<button class="btn btn-danger" type="button">
+								<i class="icon-remove icon-white"></i>
+							</button>
+							<button class="btn btn-success" type="button">
+								<i class="icon-refresh icon-white"></i>
+							</button>
+						</td>
+					</tr>
+					<tr th:remove="all">
+						<td>Lorem ipsum dolor sit posuere.</td>
+						<td>Lorem ipsum dolor sit amet.</td>
+						<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Fusce vel lorem vestibulum magna sodales faucibus. Nullam
+							facilisis egestas feugiat. Nam sed.</td>
+						<td>
+							<button class="btn btn-danger" type="button">
+								<i class="icon-remove icon-white"></i>
+							</button>
+							<button class="btn btn-warning" type="button">
+								<i class="icon-refresh icon-white"></i>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 
