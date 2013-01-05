@@ -4,8 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "Category.getByAuthor", query = "SELECT c FROM Category c WHERE c.author = :author") })
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

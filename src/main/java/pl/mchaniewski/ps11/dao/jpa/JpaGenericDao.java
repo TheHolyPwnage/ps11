@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import pl.mchaniewski.ps11.dao.GenericDao;
 
 public class JpaGenericDao<T, ID> implements GenericDao<T, ID> {
-	@PersistenceContext
+	@PersistenceContext(unitName = "jpaUnit")
 	protected EntityManager entityManager;
 	private Class<T> clazz;
 

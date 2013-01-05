@@ -4,8 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+		@NamedQuery(name = "Post.getByCategoryId", query = "SELECT p FROM Post p WHERE p.categoryId = :categoryId"),
+		@NamedQuery(name = "Post.getByAuthor", query = "SELECT p FROM Post P WHERE p.author = :author") })
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
