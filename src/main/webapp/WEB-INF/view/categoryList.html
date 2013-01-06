@@ -4,9 +4,8 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Lista kategorii</title>
+<title>Lista tematów</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!-- Bootstrap -->
 <link href="../../resources/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" th:href="@{/css/bootstrap.min.css}" />
 </head>
@@ -28,7 +27,7 @@
 						<th>Title</th>
 						<th>Author</th>
 						<th>Description</th>
-						<th style="width: 90px;">Options</th>
+						<th style="width: 90px;"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -82,6 +81,59 @@
 				</tbody>
 			</table>
 		</div>
+
+		<form action="#" method="POST" th:action="@{/category}"
+			th:object="${categoryForm}">
+			<div class="row well well-small">
+				<div class="span12">
+					<div class="row">
+						<div class="span5">
+							<!-- Warning/Error - obsluga validacji -->
+							<div class="row control-group controls"
+								th:classappend="${#fields.hasErrors('author')}? 'error'">
+								<div class="span3">
+									<input type="text" id="inputWarning" placeholder="Author"
+										th:field="*{author}" />
+								</div>
+								<div class="span2" th:if="${#fields.hasErrors('author')}">
+									<span class="help-inline" th:errors="*{author}">Something
+										may have gone wrong</span>
+								</div>
+							</div>
+						</div>
+						<div class="span6">
+							<!-- Warning/Error - obsluga validacji -->
+							<div class="row control-group controls"
+								th:classappend="${#fields.hasErrors('title')}? 'error'">
+								<div class="span4">
+									<input class="input-xlarge" type="text" id="inputWarning"
+										placeholder="Title" th:field="*{title}" />
+								</div>
+								<div class="span2" th:if="${#fields.hasErrors('title')}">
+									<span class="help-inline" th:errors="*{title}">Something
+										may have gone wrong</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="control-group controls"
+						th:classappend="${#fields.hasErrors('description')}? 'error'">
+						<div class="row" th:if="${#fields.hasErrors('description')}">
+							<span class="help-inline" th:errors="*{description}">Something
+								may have gone wrong</span>
+						</div>
+						<div class="row">
+							<textarea id="textarea" rows="3" class="span12"
+								placeholder="Description" th:field="*{description}"></textarea>
+						</div>
+					</div>
+					<div class="row span11">
+						<input class="btn btn-large btn-block btn-primary" type="submit"
+							value="Create" />
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 
 </body>

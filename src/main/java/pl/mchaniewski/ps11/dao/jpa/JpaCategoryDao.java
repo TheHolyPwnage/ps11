@@ -10,7 +10,7 @@ import pl.mchaniewski.ps11.dao.CategoryDao;
 import pl.mchaniewski.ps11.entity.Category;
 
 @Repository("categoryDao")
-public class JpaCategoryDao extends JpaGenericDao<Category, Long> implements
+public class JpaCategoryDao extends JpaGenericDao<Category, Integer> implements
 		CategoryDao {
 
 	public List<Category> getByAuthor(String author) {

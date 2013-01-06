@@ -1,5 +1,6 @@
 package pl.mchaniewski.ps11.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,17 +15,18 @@ import javax.persistence.NamedQuery;
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	private String title;
 	private String author;
 	private String description;
-	private boolean active;
+	@Column(columnDefinition = "BOOLEAN")
+	private Boolean active;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -62,7 +64,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return String.format("%s(id=%ld, author=%s, title=%s, description=%s)",
+		return String.format("%s(id=%d, author=%s, title=%s, description=%s)",
 				this.getClass().getSimpleName(), this.getId(),
 				this.getAuthor(), this.getTitle(), this.getDescription());
 	}

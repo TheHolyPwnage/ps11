@@ -23,6 +23,7 @@
 		<logback.version>1.0.6</logback.version>
 		<javassist.version>3.12.1.GA</javassist.version>
 		<thymeleaf-spring3.version>2.0.15</thymeleaf-spring3.version>
+		<apache.commons.lang.version>3.1</apache.commons.lang.version>
 	</properties>
 
 	<dependencies>
@@ -151,6 +152,11 @@
 			<artifactId>thymeleaf-spring3</artifactId>
 			<version>${thymeleaf-spring3.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${apache.commons.lang.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -192,6 +198,20 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}</directory>
+							<includes>
+								<include>dependency-reduced-pom.xml</include>
+								<include>derby.log</include>
+							</includes>
+						</fileset>
+					</filesets>
 				</configuration>
 			</plugin>
 		</plugins>

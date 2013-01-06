@@ -15,25 +15,25 @@ import javax.persistence.NamedQuery;
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private Long categoryId;
+	private Integer id;
+	private Integer categoryId;
 	private String title;
 	private String author;
 	private String content;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Long getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(Long categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -64,7 +64,7 @@ public class Post {
 	@Override
 	public String toString() {
 		return String
-				.format("%s(id=%ld, categoryId='%ld', author=%s, title=%s, content=%s)",
+				.format("%s(id=%d, categoryId='%ld', author=%s, title=%s, content=%s)",
 						this.getClass().getSimpleName(), this.getId(),
 						this.getCategoryId(), this.getAuthor(),
 						this.getTitle(), this.getContent());

@@ -10,7 +10,7 @@ import pl.mchaniewski.ps11.dao.PostDao;
 import pl.mchaniewski.ps11.entity.Post;
 
 @Repository("postDao")
-public class JpaPostDao extends JpaGenericDao<Post, Long> implements PostDao {
+public class JpaPostDao extends JpaGenericDao<Post, Integer> implements PostDao {
 
 	public List<Post> getByCategoryId(Long categoryId) {
 		TypedQuery<Post> query = entityManager.createNamedQuery(

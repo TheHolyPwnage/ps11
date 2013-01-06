@@ -4,12 +4,13 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.mchaniewski.ps11.dao.GenericDao;
 
 public class JpaGenericDao<T, ID> implements GenericDao<T, ID> {
-	@PersistenceContext(unitName = "jpaUnit")
+	@Autowired
 	protected EntityManager entityManager;
 	private Class<T> clazz;
 
