@@ -24,8 +24,8 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Title</th>
 						<th>Author</th>
+						<th>Title</th>
 						<th>Description</th>
 						<th style="width: 90px;"></th>
 					</tr>
@@ -33,8 +33,9 @@
 				<tbody>
 					<tr th:each="cat : ${categoryList}"
 						th:class="${!cat.active}? 'error'">
-						<td th:text="${cat.title}">Title</td>
 						<td th:text="${cat.author}">Author</td>
+						<td><a href="#" th:text="${cat.title}"
+							th:href="@{'/post/'+${cat.id}}">Title</a></td>
 						<td th:text="${cat.description}">Lorem ipsum dolor sit amet,
 							consectetur adipiscing elit. Fusce vel lorem vestibulum magna
 							sodales faucibus. Nullam facilisis egestas feugiat. Nam sed.</td>

@@ -12,7 +12,7 @@ import pl.mchaniewski.ps11.entity.Post;
 @Repository("postDao")
 public class JpaPostDao extends JpaGenericDao<Post, Integer> implements PostDao {
 
-	public List<Post> getByCategoryId(Long categoryId) {
+	public List<Post> getByCategoryId(Integer categoryId) {
 		TypedQuery<Post> query = entityManager.createNamedQuery(
 				"Post.getByCategoryId", Post.class);
 		query.setParameter("categoryId", categoryId);

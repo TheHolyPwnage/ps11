@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title th:text="${category.title}">Temat tematu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../../resources/css/bootstrap.min.css" rel="stylesheet"
+	media="screen" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="row" th:include="template/header :: notMain">
+			<div class="navbar" th:remove="all">
+				<div class="navbar-inner">
+					<a class="brand" href="#">SpamFest</a>
+					<ul class="nav">
+						<li class="active"><a href="categoryList.html"
+							th:href="@{/category}">Topics</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Author</th>
+						<th>Title</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:class="${!category.active}? 'error'">
+						<td th:text="${category.author}">Author</td>
+						<td><a href="#" th:text="${category.title}"
+							th:href="@{'/post/'+${category.id}}">Title</a></td>
+						<td th:text="${category.description}">Lorem ipsum dolor sit
+							amet, consectetur adipiscing elit. Fusce vel lorem vestibulum
+							magna sodales faucibus. Nullam facilisis egestas feugiat. Nam
+							sed.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="row">
+			<table class="table table-hover">
+				<tbody>
+					<tr th:each="post : ${postList}">
+						<td style="width: 25%;" th:text="${post.author}">Author</td>
+						<td th:text="${post.content}">Lorem ipsum dolor sit amet,
+							consectetur adipiscing elit. Fusce vel lorem vestibulum magna
+							sodales faucibus. Nullam facilisis egestas feugiat. Nam sed.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<form action="#" method="POST" th:action="@{'/post/'+${category.id}}"
+			th:object="${postForm}">
+			<div class="row well well-small">
+				<div class="span12">
+					<div class="row control-group controls"
+						th:classappend="${#fields.hasErrors('author')}? 'error'">
+						<div class="span3">
+							<input type="text" id="inputWarning" placeholder="Author"
+								th:field="*{author}" />
+						</div>
+						<div class="span2" th:if="${#fields.hasErrors('author')}">
+							<span class="help-inline" th:errors="*{author}">Something
+								may have gone wrong</span>
+						</div>
+					</div>
+					<div class="control-group controls"
+						th:classappend="${#fields.hasErrors('content')}? 'error'">
+						<div class="row" th:if="${#fields.hasErrors('content')}">
+							<span class="help-inline" th:errors="*{content}">Something
+								may have gone wrong</span>
+						</div>
+						<div class="row">
+							<textarea id="textarea" rows="3" class="span12"
+								placeholder="Content" th:field="*{content}"></textarea>
+						</div>
+					</div>
+					<div class="row span11">
+						<input class="btn btn-large btn-block btn-primary" type="submit"
+							value="Post" />
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

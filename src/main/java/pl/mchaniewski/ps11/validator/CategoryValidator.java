@@ -13,7 +13,7 @@ public class CategoryValidator implements Validator {
 	private static final String DEFAULT_AUTHOR = "~Anonymous";
 	private static final int AUTHOR_MAX_LENGTH = 20;
 	private static final int TITLE_MAX_LENGTH = 30;
-	private static final int DESCRIPTION_MAX_LENGTH = 255;
+	private static final int DESCRIPTION_MAX_LENGTH = 150;
 
 	public boolean supports(Class<?> clazz) {
 		return Category.class.equals(clazz);

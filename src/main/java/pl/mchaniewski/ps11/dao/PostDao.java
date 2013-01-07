@@ -8,7 +8,7 @@ import pl.mchaniewski.ps11.entity.Post;
 
 public interface PostDao extends GenericDao<Post, Integer> {
 	@Transactional
-	public List<Post> getByCategoryId(Long categoryId);
+	public List<Post> getByCategoryId(Integer categoryId);
 
 	@Transactional
 	public List<Post> getByAuthor(String author);

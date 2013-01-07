@@ -17,7 +17,6 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private Integer categoryId;
-	private String title;
 	private String author;
 	private String content;
 
@@ -45,14 +44,6 @@ public class Post {
 		this.author = author;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -63,11 +54,10 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return String
-				.format("%s(id=%d, categoryId='%ld', author=%s, title=%s, content=%s)",
-						this.getClass().getSimpleName(), this.getId(),
-						this.getCategoryId(), this.getAuthor(),
-						this.getTitle(), this.getContent());
+		return String.format(
+				"%s(id=%d, categoryId='%ld', author=%s, content=%s)", this
+						.getClass().getSimpleName(), this.getId(), this
+						.getCategoryId(), this.getAuthor(), this.getContent());
 	}
 
 }

@@ -7,7 +7,7 @@
 	<div th:fragment="main">
 		<div class="navbar">
 			<div class="navbar-inner">
-				<a class="brand" href="#">SpamFest</a>
+				<a class="brand" href="#" th:href="@{/}">SpamFest</a>
 			</div>
 		</div>
 	</div>
@@ -16,7 +16,7 @@
 	<div th:fragment="notMain">
 		<div class="navbar">
 			<div class="navbar-inner">
-				<a class="brand" href="#">SpamFest</a>
+				<a class="brand" href="#" th:href="@{/}">SpamFest</a>
 				<ul class="nav">
 					<li class="active"><a href="categoryList.html"
 						th:href="@{/category}">Topics</a></li>
