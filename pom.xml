@@ -198,6 +198,14 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<scanTargetPatterns>
+						<scanTargetPattern>
+							<directory>src/main/webapp/WEB-INF/</directory>
+							<includes>
+								<include>view/*.html</include>
+							</includes>
+						</scanTargetPattern>
+					</scanTargetPatterns>
 				</configuration>
 			</plugin>
 			<plugin>

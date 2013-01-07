@@ -10,6 +10,9 @@ public interface GenericDao<T, ID> {
 	public void delete(T entity);
 
 	@Transactional
+	public void deleteById(ID id);
+
+	@Transactional
 	public void update(T entity);
 
 	@Transactional

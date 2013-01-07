@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -48,4 +49,36 @@ public class CategoryController {
 
 		return "redirect:/category";
 	}
+
+	@RequestMapping(value = "remove/{categoryId}", method = RequestMethod.GET)
+	public String removeCategory(@PathVariable String categoryId) {
+		try {
+			Integer catId = Integer.parseInt(categoryId);
+			Category cat = categoryDao.findById(catId);
+			if (cat != null) {
+				categoryDao.deleteById(cat.getId());
+			}
+		} catch (NumberFormatException ex) {
+
+		}
+
+		return "redirect:/category";
+	}
+
+	@RequestMapping(value = "status/{categoryId}", method = RequestMethod.GET)
+	public String statusCategory(@PathVariable String categoryId) {
+		try {
+			Integer catId = Integer.parseInt(categoryId);
+			Category cat = categoryDao.findById(catId);
+			if (cat != null) {
+				cat.setActive(!cat.isActive());
+				categoryDao.update(cat);
+			}
+		} catch (NumberFormatException ex) {
+
+		}
+
+		return "redirect:/category";
+	}
+
 }

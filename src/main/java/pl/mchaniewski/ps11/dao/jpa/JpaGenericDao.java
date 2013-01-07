@@ -29,6 +29,13 @@ public class JpaGenericDao<T, ID> implements GenericDao<T, ID> {
 		this.entityManager.remove(entity);
 	}
 
+	public void deleteById(ID id) {
+		T en = this.entityManager.find(clazz, id);
+		if (en != null) {
+			this.entityManager.remove(en);
+		}
+	}
+
 	public void update(T entity) {
 		this.entityManager.merge(entity);
 	}
