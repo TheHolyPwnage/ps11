@@ -24,6 +24,7 @@
 		<javassist.version>3.12.1.GA</javassist.version>
 		<thymeleaf-spring3.version>2.0.15</thymeleaf-spring3.version>
 		<apache.commons.lang.version>3.1</apache.commons.lang.version>
+		<aspectj.version>1.5.4</aspectj.version>
 	</properties>
 
 	<dependencies>
@@ -73,6 +74,21 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-asm</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -219,6 +235,9 @@
 								<include>dependency-reduced-pom.xml</include>
 								<include>derby.log</include>
 							</includes>
+						</fileset>
+						<fileset>
+							<directory>tmp</directory>
 						</fileset>
 					</filesets>
 				</configuration>

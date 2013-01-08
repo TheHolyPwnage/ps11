@@ -1,5 +1,40 @@
 <configuration>
+	<property name="LOG_DIR" value="tmp" />
+
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="STATIC_FILE" class="ch.qos.logback.core.FileAppender">
+		<file>${LOG_DIR}/static_logs.log</file>
+
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="ROLLING_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIR}/rolling_logs.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- Codziennie nowy plik. -->
+			<fileNamePattern>rolling_logs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+
+			<!-- Maksymalnie 30 dni historii. -->
+			<maxHistory>30</maxHistory>
+
+
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- Jeżeli nie minął jeden dzień, a plik ma już 1MB stwórz nowy plik. -->
+				<maxFileSize>1MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
 			</pattern>
@@ -9,4 +44,8 @@
 	<root level="info">
 		<appender-ref ref="CONSOLE" />
 	</root>
+
+	<logger name="DaoLogger" level="debug">
+		<appender-ref ref="ROLLING_FILE" />
+	</logger>
 </configuration>
