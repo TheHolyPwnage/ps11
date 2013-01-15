@@ -19,6 +19,9 @@ public class CategoryController {
 	private CategoryDao categoryDao;
 	private CategoryValidator categoryValidator;
 
+	public CategoryController() {
+	}
+
 	@Autowired
 	public CategoryController(CategoryDao categoryDao,
 			CategoryValidator categoryValidator) {

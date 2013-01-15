@@ -10,10 +10,10 @@ import pl.mchaniewski.ps11.entity.Category;
 
 @Component
 public class CategoryValidator implements Validator {
-	private static final String DEFAULT_AUTHOR = "~Anonymous";
-	private static final int AUTHOR_MAX_LENGTH = 20;
-	private static final int TITLE_MAX_LENGTH = 30;
-	private static final int DESCRIPTION_MAX_LENGTH = 150;
+	public static final String DEFAULT_AUTHOR = "~Anonymous";
+	public static final int AUTHOR_MAX_LENGTH = 20;
+	public static final int TITLE_MAX_LENGTH = 30;
+	public static final int DESCRIPTION_MAX_LENGTH = 150;
 
 	public boolean supports(Class<?> clazz) {
 		return Category.class.equals(clazz);
@@ -39,7 +39,7 @@ public class CategoryValidator implements Validator {
 		}
 
 		if (StringUtils.isNotBlank(cat.getDescription())
-				&& cat.getTitle().length() > DESCRIPTION_MAX_LENGTH) {
+				&& cat.getDescription().length() > DESCRIPTION_MAX_LENGTH) {
 			errors.rejectValue("description",
 					"categoryValidator.description.tooLong");
 		}

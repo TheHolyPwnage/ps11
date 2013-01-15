@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pl.mchaniewski.ps11.dao.GenericDao;
 
 public class JpaGenericDao<T, ID> implements GenericDao<T, ID> {
-	@Autowired
 	protected EntityManager entityManager;
 	private Class<T> clazz;
 
@@ -44,6 +43,7 @@ public class JpaGenericDao<T, ID> implements GenericDao<T, ID> {
 		return this.entityManager.find(clazz, id);
 	}
 
+	@Autowired
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}

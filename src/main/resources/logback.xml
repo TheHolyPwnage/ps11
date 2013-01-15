@@ -41,11 +41,12 @@
 		</encoder>
 	</appender>
 
-	<root level="info">
+	<root level="WARN">
 		<appender-ref ref="CONSOLE" />
 	</root>
 
-	<logger name="DaoLogger" level="debug">
+	<logger name="CategoryLogger" level="DEBUG">
+		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="ROLLING_FILE" />
 	</logger>
 </configuration>

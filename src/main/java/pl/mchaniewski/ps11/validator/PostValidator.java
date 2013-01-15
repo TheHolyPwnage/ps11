@@ -10,9 +10,9 @@ import pl.mchaniewski.ps11.entity.Post;
 
 @Component
 public class PostValidator implements Validator {
-	private static final String DEFAULT_AUTHOR = "~Anonymous";
-	private static final int AUTHOR_MAX_LENGTH = 20;
-	private static final int CONTENT_MAX_LENGTH = 255;
+	public static final String DEFAULT_AUTHOR = "~Anonymous";
+	public static final int AUTHOR_MAX_LENGTH = 20;
+	public static final int CONTENT_MAX_LENGTH = 255;
 
 	public boolean supports(Class<?> clazz) {
 		return Post.class.equals(clazz);
