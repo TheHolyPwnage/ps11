@@ -41,11 +41,12 @@
 		</encoder>
 	</appender>
 
-	<root level="WARN">
+	<root level="INFO">
 		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="STATIC_FILE" />
 	</root>
 
-	<logger name="CategoryLogger" level="DEBUG">
+	<logger name="Counters" level="DEBUG" additivity="false">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="ROLLING_FILE" />
 	</logger>

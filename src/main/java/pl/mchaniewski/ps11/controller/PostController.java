@@ -24,6 +24,9 @@ public class PostController {
 	private CategoryDao categoryDao;
 	private PostValidator postValidator;
 
+	public PostController() {
+	}
+
 	@Autowired
 	public PostController(PostDao postDao, CategoryDao categoryDao,
 			PostValidator postValidator) {
